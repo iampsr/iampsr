@@ -1,17 +1,9 @@
 # _config.yml
-remote_theme: "mmistakes/minimal-mistakes"
+theme: jekyll-theme-cayman
 title: "iampsr"
 description: "iampsr — motorcycle rides, gear, and videos"
-baseurl: ""          # leave blank for user.github.io sites
+baseurl: ""
 url: "https://iampsr.com"
 
 plugins:
   - jekyll-feed
-
-# recommended minimal mistakes options (you can expand later)
-defaults:
-  - scope:
-      path: ""
-      type: "posts"
-    values:
-      layout: "single"
