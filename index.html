@@ -1,358 +1,162 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>iampsr</title>
-<link rel="icon" href="favicon.ico" />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PSR • Prem Singh Rides</title>
 
 <style>
-  :root{
-    --bg:#0b0b0b; --card: rgba(255,255,255,0.05);
-    --glass-border: rgba(255,255,255,0.12);
-    --accent: #ff6b00; --text:#fff; --muted:rgba(255,255,255,0.75);
+  :root {
+    --bg: #ffffff;
+    --text: #111;
+    --sub: #555;
+    --accent: #ff6b00;
   }
-  :root.light{
-    --bg: #f6f7f9; --card: rgba(0,0,0,0.04);
-    --glass-border: rgba(0,0,0,0.08);
-    --accent: #ff6b00; --text:#0b0b0b; --muted: rgba(11,11,11,0.7);
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0d0d0d;
+      --text: #f2f2f2;
+      --sub: #aaa;
+    }
   }
 
-  /* base */
-  html,body{height:100%;margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;color:var(--text);background:linear-gradient(180deg,var(--bg),#060606)}
-  a{color:var(--accent);text-decoration:none}
-  .container{max-width:1100px;margin:0 auto;padding:20px}
-
-  /* header */
-  header{display:flex;align-items:center;justify-content:space-between;gap:18px}
-  .brand{display:flex;align-items:center;gap:12px}
-  .logo{width:58px;height:58px;border-radius:10px;overflow:hidden;border:1px solid var(--glass-border);background:var(--card);display:flex;align-items:center;justify-content:center}
-  .logo img{width:100%;height:100%;object-fit:cover;display:block}
-  .brand h1{margin:0;font-size:18px}
-  .nav {display:flex;gap:10px;align-items:center}
-  .btn {background:linear-gradient(180deg,var(--accent),#ff8b3a);border:none;color:#111;padding:8px 12px;border-radius:10px;font-weight:700;cursor:pointer}
-  .ghost {background:transparent;border:1px solid var(--glass-border);padding:8px 12px;border-radius:10px;color:var(--muted);cursor:pointer}
-
-  /* hero */
-  .hero{
-    margin-top:18px;border-radius:16px;padding:28px;display:flex;gap:20px;align-items:center;
-    background:var(--card);backdrop-filter:blur(12px);border:1px solid var(--glass-border)
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: Inter, system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
   }
-  .hero-left{flex:1}
-  .hero-right{width:320px;max-width:40%}
-  .hero h2{margin:0;font-size:28px}
-  .hero p{margin:8px 0;color:var(--muted)}
 
-  /* grid */
-  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;margin-top:18px}
-  .card{background:var(--card);border-radius:12px;padding:12px;border:1px solid var(--glass-border);backdrop-filter:blur(10px);transition:transform .25s,box-shadow .25s}
-  .card:hover{transform:translateY(-6px);box-shadow:0 12px 30px rgba(0,0,0,0.45)}
-  .card img{width:100%;height:160px;object-fit:cover;border-radius:8px}
+  .container {
+    max-width: 900px;
+    margin: auto;
+    padding: 30px 20px;
+  }
 
-  /* timeline / rides */
-  .timeline-wrap{display:flex;flex-direction:row;gap:18px;align-items:flex-start}
-  .timeline{flex:1;border-left:4px solid var(--accent);padding-left:16px}
-  .event{position:relative;margin-bottom:26px}
-  .event::before{content:"";position:absolute;left:-28px;top:6px;width:12px;height:12px;background:var(--accent);border-radius:50%;box-shadow:0 0 12px rgba(255,107,0,0.14)}
-  .event h4{margin:0 0 6px 0}
-  .event p{margin:0;color:var(--muted)}
+  /* HEADER */
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 0;
+  }
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .logo img {
+    width: 48px;
+    height: 48px;
+    border-radius: 10px;
+    object-fit: cover;
+  }
+  nav a {
+    margin-left: 18px;
+    color: var(--text);
+    text-decoration: none;
+    font-weight: 600;
+  }
 
-  /* video */
-  .video-box{border-radius:12px;overflow:hidden;border:1px solid var(--glass-border);background:var(--card);padding:8px}
+  /* HERO */
+  .hero {
+    margin-top: 40px;
+    text-align: left;
+  }
+  .hero h1 {
+    font-size: 42px;
+    font-weight: 800;
+    margin-bottom: 12px;
+  }
+  .hero p {
+    font-size: 19px;
+    color: var(--sub);
+    max-width: 620px;
+  }
 
-  /* map area */
-  .map-card{height:360px;display:flex;flex-direction:column;gap:10px}
-  .map-toolbar{display:flex;gap:8px;align-items:center}
-  .map-area{flex:1;border-radius:10px;border:1px solid var(--glass-border);overflow:hidden;background:linear-gradient(180deg,rgba(0,0,0,0.02),transparent);position:relative}
-  /* SVG styling */
-  svg.route-map{width:100%;height:100%;display:block;touch-action:none}
-  .route-path{fill:none;stroke:var(--accent);stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1000;stroke-dashoffset:1000}
-  .pin{fill:var(--accent);stroke:rgba(255,255,255,0.05);stroke-width:1}
+  /* SECTION */
+  section {
+    margin-top: 60px;
+  }
+  h2 {
+    font-size: 26px;
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+  .list {
+    margin-left: 15px;
+  }
+  .list div {
+    margin-bottom: 10px;
+  }
 
-  /* footer */
-  footer{text-align:center;margin:30px 0;color:var(--muted);font-size:14px}
-
-  /* theme toggle small */
-  .theme-toggle{display:inline-flex;align-items:center;gap:8px;background:transparent;border:1px solid var(--glass-border);padding:6px 8px;border-radius:10px;color:var(--muted);cursor:pointer}
-
-  /* responsive */
-  @media (max-width:880px){
-    .hero{flex-direction:column;align-items:stretch}
-    .hero-right{width:100%;max-width:none}
-    .timeline-wrap{flex-direction:column}
-    .map-card{height:300px}
+  footer {
+    text-align: center;
+    margin-top: 80px;
+    color: var(--sub);
+    font-size: 14px;
+    padding-bottom: 40px;
   }
 </style>
 </head>
-<body>
 
+<body>
 <div class="container">
-  <!-- header -->
+
+  <!-- HEADER -->
   <header>
-    <div class="brand">
-      <div class="logo" title="PSR logo">
-        <!-- uploaded file path (system will replace this with a URL) -->
-        <img src="/mnt/data/Screenshot 2025-11-26 at 2.53.24 AM.png" alt="PSR logo">
-      </div>
-      <div>
-        <h1>PSR • Prem Singh</h1>
-        <div style="font-size:13px;color:var(--muted)">Rides • Reviews • Explains</div>
-      </div>
+    <div class="logo">
+      <img src="/mnt/data/Screenshot 2025-11-26 at 2.53.24 AM.png" />
+      <strong>PSR</strong>
     </div>
 
-    <nav class="nav" aria-label="Main navigation">
-      <a class="ghost" href="/about.html">About</a>
-      <a class="ghost" href="/gear.html">Gear</a>
-      <a class="btn" href="/psr-explains.html">PSR Explains</a>
-      <button id="themeBtn" class="theme-toggle" title="Toggle theme">🌗 Theme</button>
+    <nav>
+      <a href="/about.html">About</a>
+      <a href="/psr-explains.html">PSR Explains</a>
+      <a href="/gear.html">Gear</a>
     </nav>
   </header>
 
-  <!-- hero -->
-  <section class="hero" aria-labelledby="hero-title">
-    <div class="hero-left">
-      <h2 id="hero-title">Motorcycle adventures • Real gear • Honest stories</h2>
-      <p>Long rides across India — detailed breakdowns, ride gear, and my tips. Scroll to explore or jump to PSR Explains for deep dives.</p>
+  <!-- HERO -->
+  <div class="hero">
+    <h1>Prem Singh Rides</h1>
+    <p>I’m Prem — a corporate professional, rider, traveler, YouTuber, and co-founder of RevSync. This website is where I share my rides, my experiences, and the gear that truly works on the road.</p>
+  </div>
 
-      <div style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap">
-        <a class="btn" href="#rides">My Rides</a>
-        <a class="ghost" href="#bike">My Bike</a>
-        <a class="ghost" href="#products">Products</a>
-      </div>
-    </div>
-
-    <div class="hero-right card">
-      <strong>Quick facts</strong>
-      <ul style="margin:10px 0 0 14px;color:var(--muted)">
-        <li>Primary bike: Pulsar NS200</li>
-        <li>Longest ride: Hyderabad → Kolkata (2000 Kms)</li>
-        <li>Vlog camera: GoPro Hero 7, insta 360 & iphone 15</li>
-      </ul>
-      <div style="margin-top:12px">
-        <a class="ghost" href="/contact.html">Contact</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- video -->
+  <!-- RIDES -->
   <section>
-    <h2>Latest Video</h2>
-    <div class="video-box">
-      <!-- replace YOUR_VIDEO_ID -->
-      <iframe width="100%" height="400" src="https://youtu.be/-iUlO-0lPW0?si=VOIo-f3b3wWzPE-t" frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <h2>Recent Rides</h2>
+    <div class="list">
+      <div>• Lachung → Gangtok (hidden route, off-road)</div>
+      <div>• Hyderabad → Goa (coastal & hills)</div>
+      <div>• Hyderabad → Kolkata (1-day endurance)</div>
     </div>
   </section>
 
-  <!-- bike -->
-  <section id="bike">
+  <!-- BIKE -->
+  <section>
     <h2>My Bike</h2>
-    <div class="grid">
-      <div class="card">
-        <img src="bike.jpg" alt="Pulsar NS200">
-        <h3>Pulsar NS200</h3>
-        <p>Set up for hilly runs and long highway stints. Comfortable yet nimble — my daily adventurer.</p>
-      </div>
+    <div class="list">
+      <div>• Pulsar NS200 — my main touring and hill-ride machine.</div>
     </div>
   </section>
 
-  <!-- rides + timeline + interactive map -->
-  <section id="rides">
-    <h2>My Rides</h2>
-
-    <div class="timeline-wrap">
-      <div class="card timeline" style="min-width:320px;">
-        <div class="event">
-          <h4>Lachung → Gangtok</h4>
-          <p>Hidden route, off-road patches and an unexpected paradise spot.</p>
-        </div>
-        <div class="event">
-          <h4>Hyderabad → Goa</h4>
-          <p>Coastal stretch, night riding and winding hill roads.</p>
-        </div>
-        <div class="event">
-          <h4>Hyderabad → Kolkata (1 day)</h4>
-          <p>Endurance run — long highway focus and minimal stops.</p>
-        </div>
-      </div>
-
-      <div class="card map-card" role="region" aria-label="Interactive ride map">
-        <div class="map-toolbar">
-          <button id="drawBtn" class="btn">Animate Route</button>
-          <button id="resetView" class="ghost">Reset View</button>
-          <div style="margin-left:auto;color:var(--muted);font-size:13px">Drag to pan • Wheel to zoom</div>
-        </div>
-
-        <div class="map-area" id="mapArea">
-          <!-- Inline SVG interactive map -->
-          <svg class="route-map" viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid meet" id="svgMap" tabindex="0"
-               aria-label="Ride route map — interactive">
-            <!-- subtle background shape for land -->
-            <rect width="1200" height="700" fill="transparent"></rect>
-
-            <!-- example route (stylized) -->
-            <path id="route" class="route-path" d="M120 600 C200 520, 300 480, 420 520 C520 550, 620 460, 740 480 C860 500, 980 380, 1060 340" />
-
-            <!-- pins -->
-            <g id="pins">
-              <circle class="pin" cx="120" cy="600" r="8"></circle>
-              <circle class="pin" cx="420" cy="520" r="8"></circle>
-              <circle class="pin" cx="740" cy="480" r="8"></circle>
-              <circle class="pin" cx="1060" cy="340" r="8"></circle>
-            </g>
-          </svg>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- products -->
-  <section id="products">
-    <h2>Products I Use</h2>
-    <div class="grid">
-      <div class="card">
-        <img src="helmet.jpg" alt="KYT Striker">
-        <h3>KYT Striker</h3>
-        <p>Trusted touring helmet — comfortable with good ventilation.</p>
-      </div>
-      <div class="card">
-        <img src="gopro.jpg" alt="GoPro">
-        <h3>GoPro Hero 12</h3>
-        <p>Primary vlogging and ride camera — wide FOV and stabilization.</p>
-      </div>
-      <div class="card">
-        <img src="gloves.jpg" alt="Gloves">
-        <h3>Riding Gloves</h3>
-        <p>Mix of gauntlet and street gloves depending on the trip.</p>
-      </div>
+  <!-- PRODUCTS -->
+  <section>
+    <h2>Gear I Use</h2>
+    <div class="list">
+      <div>• KYT Striker / TT Course (helmet) </div>
+      <div>• GoPro Hero 12 (vlog & POV) </div>
+      <div>• Touring gloves / Street gloves</div>
     </div>
   </section>
 
   <footer>
-    © <span id="year"></span> PSR — Prem Singh. Built with ❤️ and long rides.
+    © <script>document.write(new Date().getFullYear())</script> PSR — All rights reserved.
   </footer>
+
 </div>
-
-<script>
-  // fill year
-  document.getElementById('year').textContent = new Date().getFullYear();
-
-  /* ----------------------------
-     Theme handling (auto + toggle)
-     ---------------------------- */
-  const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-  const root = document.documentElement;
-  const stored = localStorage.getItem('psr-theme'); // 'dark'|'light'|'auto' or null
-  function applyTheme(theme) {
-    if(theme === 'auto') {
-      if(window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
-        root.classList.add('light'); root.style.colorScheme='light';
-      } else { root.classList.remove('light'); root.style.colorScheme='dark'; }
-    } else if(theme === 'light') {
-      root.classList.add('light'); root.style.colorScheme='light';
-    } else { // dark
-      root.classList.remove('light'); root.style.colorScheme='dark';
-    }
-    updateThemeButton(theme);
-  }
-  function updateThemeButton(theme){
-    const btn = document.getElementById('themeBtn');
-    if(!btn) return;
-    if(theme === 'auto') btn.textContent = '🌗 Auto';
-    else if(theme === 'light') btn.textContent = '🌞 Light';
-    else btn.textContent = '🌙 Dark';
-  }
-  // initialize
-  const initial = stored || 'auto';
-  applyTheme(initial);
-
-  // toggle through modes on click
-  document.getElementById('themeBtn').addEventListener('click', () => {
-    const next = (localStorage.getItem('psr-theme') || 'auto') === 'auto' ? 'light'
-                : (localStorage.getItem('psr-theme') === 'light') ? 'dark' : 'auto';
-    localStorage.setItem('psr-theme', next);
-    applyTheme(next);
-  });
-
-  /* ----------------------------
-     Interactive SVG map: pan & zoom + route animation
-     ---------------------------- */
-  const svg = document.getElementById('svgMap');
-  let isPanning = false, startPoint = {x:0,y:0}, transform = {x:0,y:0,scale:1};
-
-  // helper - set transform on svg via viewBox manipulation (we'll use CSS transform on inner <g>)
-  // For simplicity we wrap children in a group transform but here we transform the svg element contents using viewBox approach:
-  const mapArea = document.getElementById('mapArea');
-  // We'll implement simple pan/zoom by using a 'g' wrapper if needed. For now we apply transform via CSS transform.
-  svg.style.transformOrigin = 'center center';
-  function setTransform(){
-    svg.style.transform = `translate(${transform.x}px, ${transform.y}px) scale(${transform.scale})`;
-  }
-
-  // pointer-based pan
-  svg.addEventListener('pointerdown', e => {
-    isPanning = true;
-    svg.setPointerCapture(e.pointerId);
-    startPoint = {x: e.clientX - transform.x, y: e.clientY - transform.y};
-  });
-  window.addEventListener('pointermove', e => {
-    if(!isPanning) return;
-    transform.x = e.clientX - startPoint.x;
-    transform.y = e.clientY - startPoint.y;
-    setTransform();
-  });
-  window.addEventListener('pointerup', e => {
-    isPanning = false;
-  });
-
-  // wheel zoom
-  svg.addEventListener('wheel', e => {
-    e.preventDefault();
-    const delta = -e.deltaY;
-    const zoomFactor = 1 + (delta > 0 ? 0.08 : -0.08);
-    const newScale = Math.min(3, Math.max(0.6, transform.scale * zoomFactor));
-    // keep translate so zoom feels centered — approximate
-    transform.scale = newScale;
-    setTransform();
-  }, {passive:false});
-
-  // reset view
-  document.getElementById('resetView').addEventListener('click', () => {
-    transform = {x:0,y:0,scale:1};
-    setTransform();
-  });
-
-  // route animation: stroke-dashoffset animation
-  const route = document.getElementById('route');
-  function animateRoute(){
-    // compute path length
-    const len = route.getTotalLength();
-    route.style.transition = 'none';
-    route.style.strokeDasharray = len;
-    route.style.strokeDashoffset = len;
-    // trigger reflow then animate
-    requestAnimationFrame(()=>{
-      route.style.transition = 'stroke-dashoffset 2.4s cubic-bezier(.2,.9,.2,1)';
-      route.style.strokeDashoffset = '0';
-    });
-  }
-  // attach to button
-  document.getElementById('drawBtn').addEventListener('click', animateRoute);
-  // auto animate once on load
-  window.addEventListener('load', ()=> setTimeout(animateRoute,500));
-
-  /* Accessibility: keyboard control to reset map (R) and animate (A) */
-  window.addEventListener('keydown', (e) => {
-    if(e.key.toLowerCase() === 'r') { transform = {x:0,y:0,scale:1}; setTransform(); }
-    if(e.key.toLowerCase() === 'a') { animateRoute(); }
-  });
-
-  /* small: ensure theme reacts to system change when in 'auto' */
-  if(window.matchMedia){
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
-      if((localStorage.getItem('psr-theme') || 'auto') === 'auto') applyTheme('auto');
-    });
-  }
-</script>
 </body>
 </html>
