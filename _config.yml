@@ -1,3 +1,17 @@
-theme: jekyll-theme-dinky
-title: PSR • Prem Singh Rides
-description: Personal website of PSR — motorcycle rider, traveler, YouTuber, co-founder of RevSync.
+# _config.yml
+remote_theme: "mmistakes/minimal-mistakes"
+title: "iampsr"
+description: "iampsr — motorcycle rides, gear, and videos"
+baseurl: ""          # leave blank for user.github.io sites
+url: "https://iampsr.com"
+
+plugins:
+  - jekyll-feed
+
+# recommended minimal mistakes options (you can expand later)
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "single"
