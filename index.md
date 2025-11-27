@@ -119,9 +119,9 @@
 
     <!-- HERO -->
     <section class="hero">
-      <div class="hero-card">
+      <div class="hero-card" style="grid-column:1/-1">
         <h1>iamPSR — for riders who want depth</h1>
-        <p class="lead">Long-form ride reports, curiosity-driven explainers about science and the universe, practical how-tos, and a curated shop for riders. PSR Explains breaks down how things work — from helmet tech to the physics of cornering — in clear, visual, and experiment-friendly essays.</p> I write from real rides — no fluff. Explore PSR Rides for route guides and PSR Explains for gear & tech deep dives.</p>
+        <p class="lead">Long-form ride reports, curiosity-driven explainers about science and the universe, practical how-tos, and a curated shop for riders. PSR Explains breaks down how things work — from helmet tech to the physics of cornering — in clear, visual, and experiment-friendly essays.</p>
         <div class="cta">
           <a class="btn" href="#rides">Explore Rides</a>
           <a class="btn ghost" href="#explains">Read Explains</a>
@@ -133,27 +133,34 @@
         </div>
       </div>
 
-      <aside style="position:relative">
-        <div class="card">
-          <h3>Quick Links</h3>
-          <ul class="muted" style="padding-left:16px;margin:8px 0">
-            <li><a href="#rides">Latest Ride: Leh ↔️ Ladakh (detailed comparison)</a></li>
-            <li><a href="#explains">How to get permits (avoid travel agents)</a></li>
-            <li><a href="#shop">Shop: PSR Essentials</a></li>
-          </ul>
-        </div>
+      <!-- Collapsible Quick Links placed below the hero so main section can use full width -->
+      <div style="grid-column:1/-1;margin-top:18px">
+        <details style="background:var(--card);padding:14px;border-radius:12px;border:1px solid rgba(255,255,255,0.04);">
+          <summary style="font-weight:700;cursor:pointer;padding:8px 10px;border-radius:8px;list-style:none;">Quick Links & Subscribe</summary>
+          <div style="display:grid;grid-template-columns:1fr 360px;gap:12px;margin-top:12px;align-items:start">
+            <div>
+              <h4 style="margin:6px 0">Quick Links</h4>
+              <ul class="muted" style="padding-left:18px;margin:8px 0;line-height:1.6">
+                <li><a href="#rides">Latest Ride: Leh ↔️ Ladakh (detailed comparison)</a></li>
+                <li><a href="#explains">How to get permits (avoid travel agents)</a></li>
+                <li><a href="#shop">Shop: PSR Essentials</a></li>
+              </ul>
+            </div>
 
-        <div style="height:12px"></div>
-        <div class="card">
-          <h4>Subscribe</h4>
-          <p class="muted">Join the mailing list for ride alerts and gear drops.</p>
-          <!-- Replace the action with your mailing provider endpoint (Mailchimp, Buttondown, ConvertKit) -->
-          <form action="#" onsubmit="alert('Replace form action with your provider');return false;" style="display:flex;gap:8px;margin-top:8px">
-            <input type="email" placeholder="you@domain.com" required style="flex:1;padding:10px;border-radius:8px;background:transparent;border:1px solid rgba(255,255,255,0.04);color:inherit">
-            <button class="btn">Subscribe</button>
-          </form>
-        </div>
-      </aside>
+            <div style="min-width:0">
+              <h4 style="margin:6px 0">Subscribe</h4>
+              <p class="muted">Join the mailing list for ride alerts and gear drops.</p>
+              <form action="#" onsubmit="alert('Replace form action with your provider');return false;" style="display:flex;flex-direction:column;gap:8px;margin-top:8px">
+                <input type="email" placeholder="you@domain.com" required style="padding:10px;border-radius:8px;background:transparent;border:1px solid rgba(255,255,255,0.04);color:inherit">
+                <div style="display:flex;gap:8px;align-items:center">
+                  <button class="btn" type="submit">Subscribe</button>
+                  <div class="small">Or email <a href="mailto:hello@iampsr.com">hello@iampsr.com</a></div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </details>
+      </div>
     </section>
 
     <!-- PSR RIDES -->
@@ -184,6 +191,25 @@
     </section>
 
     <!-- PSR EXPLAINS -->
+
+    <!-- VISUAL EXPLAINER TEMPLATE (new) -->
+    <section id="explains-template" style="margin-top:40px">
+      <h2>PSR Explains — Visual Explainer Template</h2>
+      <div class="card" style="margin-top:12px">
+        <h3>Template Structure</h3>
+        <p class="muted">Use this block when creating future PSR Explains posts. It keeps your science & universe explainers consistent, visual and easy to share.</p>
+
+        <ul class="muted" style="margin:12px 0 0 18px;line-height:1.6">
+          <li><strong>Hero Visual:</strong> A simple diagram or image representing the concept (e.g., how gyroscopic forces keep a motorcycle stable).</li>
+          <li><strong>The Curiosity Hook:</strong> A short 2–3 line punchy question that sparks interest.</li>
+          <li><strong>How It Works:</strong> A step-by-step breakdown in plain English.</li>
+          <li><strong>The Science:</strong> Use real physics, astronomy, or engineering principles — but simplified.</li>
+          <li><strong>Real Ride Connection:</strong> Show how the science appears in real riding (cornering, wind behaviour, braking forces).</li>
+          <li><strong>Try-It-Yourself Experiment:</strong> A safe, small experiment readers can test at home.</li>
+          <li><strong>Visual Diagram:</strong> One simple labelled image for clarity.</li>
+        </ul>
+      </div>
+    </section>
     <section id="explains">
       <h2>PSR Explains</h2>
       <p class="muted">Curiosity-led deep dives: science, the universe, and how things work — translated for riders and makers. Expect clear experiments, visual breakdowns, and practical takeaways that connect physics and engineering to real-world riding.</p>
@@ -206,12 +232,55 @@
       </div>
     </section>
 
+    <!-- PSR EXPLAINS SUBPAGE TEMPLATE (new) -->
+    <section id="explains-subpage-template" style="margin-top:40px">
+      <h2>PSR Explains — Long‑Form Page Template</h2>
+      <div class="card" style="margin-top:12px">
+        <p class="muted">This is the layout to use when you create full standalone PSR Explains articles (science, universe, tech, how things work). Paste this into a new HTML file like <code>explains-gyroscopic.html</code>.</p>
+
+        <pre style="white-space:pre-wrap;font-size:13px;background:rgba(255,255,255,0.03);padding:14px;border-radius:10px;border:1px solid rgba(255,255,255,0.05);overflow:auto">&lt;section class="explainer-hero"&gt;
+  &lt;h1&gt;TITLE OF THE EXPLAINER&lt;/h1&gt;
+  &lt;p&gt;A curiosity hook about the science / universe concept.&lt;/p&gt;
+&lt;/section&gt;
+
+&lt;section class="explainer-body"&gt;
+  &lt;h2&gt;How It Works&lt;/h2&gt;
+  &lt;p&gt;Break it down step by step.&lt;/p&gt;
+
+  &lt;h2&gt;The Science Behind It&lt;/h2&gt;
+  &lt;p&gt;Physics, astronomy or engineering explained simply.&lt;/p&gt;
+
+  &lt;h2&gt;Real Ride Connection&lt;/h2&gt;
+  &lt;p&gt;Explain how this principle appears during riding.&lt;/p&gt;
+
+  &lt;h2&gt;Try It Yourself Experiment&lt;/h2&gt;
+  &lt;ul&gt;
+    &lt;li&gt;List of simple safe experiments&lt;/li&gt;
+  &lt;/ul&gt;
+
+  &lt;h2&gt;Visual Diagram&lt;/h2&gt;
+  &lt;img src="diagram.jpg" alt="Concept diagram" style="width:100%;border-radius:10px;aspect-ratio:16/9;object-fit:cover"&gt;
+&lt;/section&gt;</pre>
+      </div>
+    </section>
+
     <!-- SHOP -->
     <section id="shop">
       <h2>Shop — PSR Essentials</h2>
       <p class="muted">Curated items I use and recommend. Link to your affiliate or Shopify store from each product card.</p>
 
       <div class="shop-grid" style="margin-top:12px">
+
+        <!-- NEW: Experiment Kit Card -->
+        <div class="product card">
+          <img src="https://via.placeholder.com/600x400?text=Experiment+Kit" alt="Experiment Kit">
+          <h4>PSR Experiment Kit</h4>
+          <div class="muted">For PSR Explains: gyroscope demos, airflow tests, light experiments. Perfect for science content & at‑home demonstrations.</div>
+          <div style="margin-top:8px;display:flex;gap:8px"><a class="btn" href="#">View</a><a class="btn ghost" href="#">Buy</a></div>
+        </div>
+
+        <!-- existing cards -->
+         style="margin-top:12px">
         <div class="product card">
           <img src="https://via.placeholder.com/600x400?text=PSR+Jacket" alt="PSR Jacket">
           <h4>PSR Riding Jacket</h4>
