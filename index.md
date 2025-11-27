@@ -8,6 +8,48 @@
   <link rel="icon" href="/favicon.ico">
   <style>
     :root{
+  --accent: #FF6A00;
+  --bg: #071122;
+  --card: #0b1420;
+  --muted: #9aa4b2;
+  --glass: rgba(255,255,255,0.04);
+  --radius: 12px;
+  --text: #e6eef6;
+  --kit: #18a058;
+  --max-width: 1150px;
+}
+
+html.light-mode{
+  --bg: #f6f7fb;
+  --card: #ffffff;
+  --muted: #4b5563;
+  --text: #071022;
+  --glass: rgba(2,6,23,0.04);
+}
+
+body{
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background: linear-gradient(180deg,var(--bg), #071122);
+  color: var(--text);
+  margin:0;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* Hero image style for rides & explainers */
+.hero-visual{ width:100%; border-radius:12px; aspect-ratio:16/9; object-fit:cover; display:block; }
+
+/* Glass quick facts (use in ride detail and explainers) */
+.glass-quickfacts{
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  backdrop-filter: blur(6px);
+  border-radius: 12px;
+  padding: 12px;
+  border: 1px solid rgba(255,255,255,0.04);
+}
+
+/* Experiment kit badge */
+.badge-kit{ background: rgba(24,160,88,0.12); color: var(--kit); padding:6px 10px; border-radius:999px; font-weight:700; font-size:0.9rem; }
+    :root{
       --bg:#0f1724; /* deep slate */
       --card:#0b1220;
       --accent:#ff6a00; /* warm orange */
