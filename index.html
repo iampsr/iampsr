@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <title>iamPSR — stories, rides & gear</title>
+    <meta name="description" content="iamPSR — motorcycle stories, ride reports, and the gear I use."/>
+    <style>
+    :root {
+        --accent: #ff6a00;
+        --bg: #f7f7f8;
+        --card: #fff;
+        --muted: #6b7280;
+        --max-w: 1100px
+    }
+
+    * {
+        box-sizing:border-box
+    }
+
+    body {
+        margin: 0;
+        font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, Arial;
+        background: var(--bg);
+        color: #111;
+        line-height: 1.6
+    }
+
+    .wrap {
+        max-width: var(--max-w);
+        margin: 0 auto;
+        padding: 20px
+    }
+
+    header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 14px 0
+    }
+
+    .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px
+    }
+
+    .logo {
+        width: 52px;
+        height: 52px;
+        border-radius: 10px;
+        background: linear-gradient(135deg, #0f1724, #111827);
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 800
+    }
+
+    nav a {
+        margin-left: 14px;
+        color: var(--muted);
+        text-decoration: none;
+        font-weight: 700
+    }
+
+    .hero {
+        display: grid;
+        grid-template-columns: 1fr 360px;
+        gap: 22px;
+        align-items: center;
+        margin: 18px 0;
+        padding: 28px;
+        border-radius: 14px;
+        background: linear-gradient(180deg, rgba(17, 24, 39, 0.02), rgba(255, 255, 255, 0));
+    }
+
+    .hero h1 {
+        margin: 0;
+        font-size: 28px
+    }
+
+    .hero p {
+        margin: 8px 0 0;
+        color: var(--muted)
+    }
+
+    .btn {
+        display: inline-block;
+        padding: 10px 14px;
+        border-radius: 10px;
+        background: var(--accent);
+        color: #fff;
+        text-decoration: none;
+        font-weight: 800
+    }
+
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+        margin-top: 18px
+    }
+
+    .card {
+        background: var(--card);
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 8px 26px rgba(2, 6, 23, 0.06);
+        display: flex;
+        flex-direction: column
+    }
+
+    .card img {
+        width: 100%;
+        height: 160px;
+        object-fit: cover
+    }
+
+    .card-body {
+        padding: 12px
+    }
+
+    .muted {
+        color: var(--muted)
+    }
+
+    .products {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 12px;
+        margin-top: 16px
+    }
+
+    .prod {
+        background: var(--card);
+        padding: 10px;
+        border-radius: 10px;
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        text-decoration: none;
+        color: inherit;
+        box-shadow: 0 6px 18px rgba(2, 6, 23, 0.04)
+    }
+
+    .prod img {
+        width: 60px;
+        height: 60px;
+        object-fit: cover;
+        border-radius: 8px
+    }
+
+    footer {
+        margin-top: 30px;
+        padding: 18px 0;
+        color: var(--muted);
+        text-align: center
+    }
+
+    @media (max-width: 980px) {
+        .hero {
+            grid-template-columns:1fr
+        }
+
+        .grid {
+            grid-template-columns:repeat(2, 1fr)
+        }
+
+        .products {
+            grid-template-columns: repeat(3, 1fr)
+        }
+    }
+
+    @media (max-width: 620px) {
+        .grid {
+            grid-template-columns:1fr
+        }
+
+        .products {
+            grid-template-columns:repeat(2, 1fr)
+        }
+
+        nav {
+            display:none
+        }
+
+        .logo {
+            width: 44px;
+            height:44px
+        }
+
+        header {
+            padding: 10px 0
+        }
+    }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <header>
+            <div class="brand">
+                <div class="logo">PSR</div>
+                <div>
+                    <div style="font-weight:800">iamPSR</div>
+                    <div class="muted" style="font-size:13px">stories, rides & gear</div>
+                </div>
+            </div>
+            <nav aria-label="Main navigation" id="mainNav">
+                <a href="/">Home</a>
+                <a href="/stories/">Stories</a>
+                <a href="/products/">Products</a>
+                <a href="/about/">About</a>
+            </nav>
+        </header>
+
+        <main>
+            <section class="hero" aria-labelledby="hero-heading">
+                <div>
+                    <div style="font-size:13px;color:var(--muted);text-transform:uppercase;letter-spacing:0.09em">Long Ride — North Sikkim</div>
+                    <h1 id="hero-heading">Motorcycle stories & practical gear — told simply.</h1>
+                    <p>Real rides, short tips, and the kit I actually use. New stories published regularly.</p>
+                    <p style="margin-top:14px">
+                        <a class="btn" href="/stories/">Read latest stories</a>
+                        <a style="margin-left:12px;color:var(--muted);font-weight:700;text-decoration:none" href="/products/">See my gear →</a>
+                    </p>
+                </div>
+                <div style="width:100%;max-width:360px">
+                    <img alt="rider on road" src="images/hero.jpg" style="width:100%;border-radius:12px;display:block;box-shadow:0 10px 28px rgba(15,23,42,0.08)" loading="lazy">
+                </div>
+            </section>
+
+            <section aria-labelledby="featured">
+                <div style="display:flex;align-items:end;justify-content:space-between">
+                    <h2 id="featured">Featured stories</h2>
+                    <div class="muted" style="font-size:14px">Latest & curated picks</div>
+                </div>
+
+                <div class="grid" role="list">
+                    <article class="card" role="listitem">
+                        <img src="images/stories/gurudongmar-thumb.jpg" alt="Gurudongmar">
+                        <div class="card-body">
+                            <div style="font-size:12px;color:var(--muted);text-transform:uppercase">Long Ride</div>
+                            <h3 style="margin:8px 0 6px">Himalayan Dawn — Lachen to Gurudongmar</h3>
+                            <p class="muted">A sunrise climb above the treeline, frozen lakes, and a quiet that makes you breathe differently.</p>
+                            <p style="margin-top:10px">
+                                <a class="btn" href="/stories/lachen-to-gurudongmar/">Read</a>
+                            </p>
+                        </div>
+                    </article>
+
+                    <article class="card" role="listitem">
+                        <img src="images/stories/toolkit-thumb.jpg" alt="Toolkit">
+                        <div class="card-body">
+                            <div style="font-size:12px;color:var(--muted);text-transform:uppercase">Review</div>
+                            <h3 style="margin:8px 0 6px">My Toolkit — The small things that matter</h3>
+                            <p class="muted">Compact tools and practical fixes that save rides.</p>
+                            <p style="margin-top:10px">
+                                <a class="btn" href="/stories/toolkit/">Read</a>
+                            </p>
+                        </div>
+                    </article>
+
+                    <article class="card" role="listitem">
+                        <img src="images/stories/packing-thumb.jpg" alt="Packing light">
+                        <div class="card-body">
+                            <div style="font-size:12px;color:var(--muted);text-transform:uppercase">Guide</div>
+                            <h3 style="margin:8px 0 6px">Packing light for two weeks</h3>
+                            <p class="muted">A minimal checklist that covers clothes, maintenance, and what to leave behind.</p>
+                            <p style="margin-top:10px">
+                                <a class="btn" href="/stories/packing-light/">Read</a>
+                            </p>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <section aria-labelledby="products" style="margin-top:24px">
+                <div style="display:flex;align-items:end;justify-content:space-between">
+                    <h2 id="products">Products I use</h2>
+                    <div class="muted" style="font-size:14px">Click an item to view all products</div>
+                </div>
+
+                <div class="products" role="list">
+                    <a class="prod" href="/products/" role="listitem">
+                        <img alt="helmet" src="images/products/helmet.jpg">
+                        <div>
+                            <strong>Adventure Helmet</strong>
+                            <div class="muted" style="font-size:13px">Arai / Shoei / budget pick</div>
+                        </div>
+                    </a>
+                    <a class="prod" href="/products/" role="listitem">
+                        <img alt="jacket" src="images/products/jacket.jpg">
+                        <div>
+                            <strong>Riding Jacket</strong>
+                            <div class="muted" style="font-size:13px">Breathable, protective</div>
+                        </div>
+                    </a>
+                    <a class="prod" href="/products/" role="listitem">
+                        <img alt="boots" src="images/products/boots.jpg">
+                        <div>
+                            <strong>Riding Boots</strong>
+                            <div class="muted" style="font-size:13px">Waterproof & sturdy</div>
+                        </div>
+                    </a>
+                    <a class="prod" href="/products/" role="listitem">
+                        <img alt="camera" src="images/products/camera.jpg">
+                        <div>
+                            <strong>Action Camera</strong>
+                            <div class="muted" style="font-size:13px">Compact & mountable</div>
+                        </div>
+                    </a>
+                </div>
+
+                <p style="margin-top:14px;text-align:center">
+                    <a class="btn" href="/products/">See all products</a>
+                </p>
+            </section>
+        </main>
+
+        <footer>
+            <div class="muted">
+                © iamPSR — Built with purpose. 
+                <a href="/privacy.html">Privacy</a>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
