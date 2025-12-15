@@ -1,29 +1,370 @@
 <!doctype html>
-<html>
+<html lang="en">
 <head>
-    <meta charset='utf-8'>
-    <meta name='viewport' content='width=device-width,initial-scale=1'>
-    <title>Packing Light</title>
-    <link rel='stylesheet' href='/assets/css/style.css'>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Packing Light — Motorcycle Travel Without Compromise — iamPSR</title>
+<meta name="description" content="Packing light for motorcycle travel — what to carry, what to leave behind, and how less weight changes the ride."/>
+
+<!-- Preload hero -->
+<link rel="preload" as="image" href="./assets/images/packing-light-hero.jpg"/>
+
+<style>
+:root{
+  --max-w:1320px;
+  --accent:#ff6a00;
+  --glass:#ffffffcc;
+  --muted:#6b7280;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Arial;
+  color:#0b1220;
+  background:#fff;
+  line-height:1.65;
+}
+
+/* =========================
+   EPIC PARALLAX HERO
+========================= */
+.hero{
+  position:relative;
+  min-height:85vh;
+  overflow:hidden;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#fff;
+}
+.hero-bg{
+  position:absolute;
+  inset:-10%;
+  background:url('./assets/images/packing-light-hero.jpg') center/cover no-repeat;
+  will-change:transform;
+}
+.hero-overlay{
+  position:absolute;
+  inset:0;
+  background:linear-gradient(180deg,rgba(0,0,0,.25),rgba(0,0,0,.75));
+}
+.hero-inner{
+  position:relative;
+  z-index:2;
+  max-width:var(--max-w);
+  padding:48px 20px;
+}
+.kicker{
+  font-size:12px;
+  text-transform:uppercase;
+  letter-spacing:.12em;
+  color:#e5e7eb;
+  margin-bottom:10px;
+}
+.hero-title{
+  font-size:clamp(30px,5vw,54px);
+  font-weight:800;
+  margin:0 0 14px;
+}
+.hero-sub{
+  max-width:720px;
+  color:#e5e7eb;
+}
+
+/* Quick facts */
+.quickfacts{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+  margin-top:22px;
+}
+.qf{
+  background:var(--glass);
+  backdrop-filter:blur(8px);
+  padding:12px 14px;
+  border-radius:12px;
+  font-size:14px;
+  font-weight:600;
+  color:#0b1220;
+}
+
+/* =========================
+   CONTENT
+========================= */
+.content{
+  max-width:var(--max-w);
+  margin:44px auto;
+  padding:0 20px;
+}
+.lead{
+  font-size:18px;
+  color:var(--muted);
+  margin-bottom:24px;
+}
+
+.rs-section{
+  display:grid;
+  grid-template-columns:63% 37%;
+  gap:28px;
+  margin-bottom:42px;
+}
+.rs-text{padding:8px}
+.rs-image{display:flex;align-items:flex-start}
+.single-img{
+  width:100%;
+  aspect-ratio:16/9;
+  object-fit:cover;
+  border-radius:12px;
+  box-shadow:0 16px 50px rgba(2,6,23,.08);
+  cursor:pointer;
+  transition:transform .35s ease;
+}
+.single-img:hover{transform:scale(1.02)}
+
+h2{margin:0 0 12px;font-size:22px}
+p{margin:0 0 14px}
+
+/* Philosophy block */
+.insight{
+  font-style:italic;
+  color:#374151;
+  border-left:3px solid var(--accent);
+  padding-left:14px;
+  margin:18px 0;
+}
+
+/* Packing checklist */
+.pack-list{
+  margin:10px 0 0 18px;
+}
+.pack-list li{margin-bottom:8px}
+
+/* =========================
+   VIDEO PREVIEW
+========================= */
+.video-poster{
+  position:relative;
+  aspect-ratio:16/9;
+  border-radius:12px;
+  overflow:hidden;
+  cursor:pointer;
+  background:#000;
+}
+.video-poster img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+.video-poster::after{
+  content:"▶";
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:72px;
+  color:#fff;
+  background:rgba(0,0,0,.25);
+}
+
+/* =========================
+   LIGHTBOX
+========================= */
+.lightbox{
+  position:fixed;
+  inset:0;
+  background:rgba(2,6,23,.85);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:9999;
+  padding:20px;
+}
+.lightbox.show{display:flex}
+.lightbox-content{
+  max-width:90vw;
+  max-height:90vh;
+}
+.lightbox img,
+.lightbox iframe{
+  width:100%;
+  max-height:90vh;
+  border-radius:12px;
+}
+
+/* Footer */
+.post-footer{
+  margin:46px 0 70px;
+  color:var(--muted);
+}
+.btn{
+  display:inline-block;
+  padding:10px 16px;
+  background:var(--accent);
+  color:#fff;
+  border-radius:10px;
+  text-decoration:none;
+  font-weight:700;
+}
+
+/* Responsive */
+@media(max-width:900px){
+  .rs-section{grid-template-columns:1fr}
+}
+</style>
 </head>
+
 <body>
-    <div class='container'>
-        <header class='header'>
-            <div class='brand'>
-                <div class='logo'>PSR</div>
-                <div>
-                    <strong>iamPSR</strong>
-                </div>
-            </div>
-            <nav class='nav'>
-                <a href='/'>Home</a>
-            </nav>
-        </header>
-        <main>
-            <h1>Packing Light</h1>
-            <p style='color:var(--muted)'>Content coming.</p>
-        </main>
-        <footer class='footer'>© iamPSR</footer>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-bg" id="heroBg"></div>
+  <div class="hero-overlay"></div>
+
+  <div class="hero-inner">
+    <div class="kicker">Motorcycle Travel — Mindset</div>
+    <h1 class="hero-title">Packing Light</h1>
+    <p class="hero-sub">
+      Not minimalism for Instagram — but carrying only what earns its place on the bike.
+    </p>
+
+    <div class="quickfacts">
+      <div class="qf">Goal: Balance & control</div>
+      <div class="qf">Less weight = less fatigue</div>
+      <div class="qf">Pack for function, not fear</div>
     </div>
+  </div>
+</header>
+
+<article class="content">
+
+<p class="lead">
+Every rider starts the same way — packing for every possible problem. Experience teaches you the opposite: most of what you carry never gets used, but it affects every kilometre you ride.
+</p>
+
+<section class="rs-section">
+  <div class="rs-text">
+    <h2>Why weight matters more than you think</h2>
+    <p>
+      On a motorcycle, weight is not passive. It pulls on your arms in corners, pushes the suspension on bad roads, and drains energy hour after hour. The bike feels heavier not only when parked — but when braking, turning, and correcting mistakes.
+    </p>
+    <p>
+      Packing light isn’t about comfort sacrifice. It’s about control.
+    </p>
+
+    <div class="insight">
+      If an item doesn’t improve safety, function, or recovery — it doesn’t belong.
+    </div>
+  </div>
+
+  <div class="rs-image">
+    <img class="single-img" src="./assets/images/packing-weight-distribution.jpg" alt="motorcycle weight distribution with luggage">
+  </div>
+</section>
+
+<section class="rs-section">
+  <div class="rs-text">
+    <h2>The core packing system</h2>
+    <p>
+      A light setup starts with a system, not a bag. Soft luggage close to the bike’s centerline always beats hard boxes filled with uncertainty.
+    </p>
+
+    <ul class="pack-list">
+      <li>1 riding jacket + removable thermal</li>
+      <li>2 base layers (quick-dry)</li>
+      <li>1 spare riding pant or liner</li>
+      <li>Compact rain shell</li>
+      <li>Minimal tool roll + puncture kit</li>
+      <li>Powerbank, cable, headlamp</li>
+    </ul>
+
+    <div class="insight">
+      If it doesn’t compress, it doesn’t travel well.
+    </div>
+  </div>
+
+  <div class="rs-image">
+    <img class="single-img" src="./assets/images/packing-soft-luggage.jpg" alt="soft luggage setup on adventure motorcycle">
+  </div>
+</section>
+
+<section class="rs-section">
+  <div class="rs-text">
+    <h2>What most riders overpack</h2>
+    <p>
+      Fear-based packing is common: extra shoes, spare jeans, heavy locks, unnecessary spares. Each item seems small — together they steal the joy from long days in the saddle.
+    </p>
+    <p>
+      Remember: towns exist, shops exist, help exists. Your bike doesn’t need to carry your anxiety.
+    </p>
+  </div>
+
+  <div class="rs-image">
+    <img class="single-img" src="./assets/images/overpacked-bike.jpg" alt="overloaded touring motorcycle">
+  </div>
+</section>
+
+<section style="margin-top:30px">
+  <h2>Watch: My real-world packing setup</h2>
+
+  <div class="video-poster" id="videoPoster">
+    <img src="./assets/images/packing-video-poster.jpg" alt="packing light motorcycle travel video">
+  </div>
+</section>
+
+<section style="margin-top:30px">
+  <h2>The quiet benefit</h2>
+  <p>
+    When the bike is lighter, your mind follows. Fewer decisions, fewer adjustments, fewer worries. You ride longer, stop less, and feel more connected to the road.
+  </p>
+  <p>
+    Packing light isn’t about what you leave behind — it’s about what you gain.
+  </p>
+</section>
+
+<div class="post-footer">
+  <p>
+    Want a printable packing checklist or a one-page visual guide for your next ride?
+  </p>
+  <p style="margin-top:12px">
+    <a class="btn" href="/products.html">See lightweight gear I use</a>
+  </p>
+</div>
+
+</article>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <div class="lightbox-content" id="lightboxContent"></div>
+</div>
+
+<script>
+/* Parallax */
+(function(){
+  const bg=document.getElementById('heroBg');
+  window.addEventListener('scroll',()=>{
+    bg.style.transform=`translateY(${window.scrollY*0.25}px)`;
+  });
+})();
+
+/* Video Lightbox */
+(function(){
+  const lb=document.getElementById('lightbox');
+  const c=document.getElementById('lightboxContent');
+  document.getElementById('videoPoster').onclick=()=>{
+    c.innerHTML=`
+      <iframe
+        src="https://www.youtube.com/embed/VIDEO_ID?autoplay=1"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+        style="aspect-ratio:16/9;width:100%;border:0;">
+      </iframe>`;
+    lb.classList.add('show');
+  };
+  lb.onclick=()=>{lb.classList.remove('show');c.innerHTML='';};
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')lb.click();});
+})();
+</script>
+
 </body>
 </html>
