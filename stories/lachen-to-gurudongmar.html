@@ -4,10 +4,9 @@
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>Himalayan Dawn — Lachen to Gurudongmar — iamPSR</title>
-<meta name="description" content="Ride story: Lachen to Gurudongmar — sunrise, high altitude lessons, and the gear that kept us going."/>
+<meta name="description" content="A high-altitude motorcycle ride from Lachen to Gurudongmar Lake — thin air, sunrise climbs, silence, and perspective."/>
 
-<!-- Preload hero for faster paint -->
-<link rel="preload" as="image" href="./assets/images/lachen-gurudongmar.jpg"/>
+<link rel="preload" as="image" href="./assets/images/lachen-gurudongmar-hero.jpg"/>
 
 <style>
 :root{
@@ -15,7 +14,6 @@
   --accent:#ff6a00;
   --glass:#ffffffcc;
   --muted:#6b7280;
-  --bg:#0f1724;
 }
 *{box-sizing:border-box}
 body{
@@ -23,12 +21,10 @@ body{
   font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Arial;
   color:#0b1220;
   background:#fff;
-  line-height:1.6;
+  line-height:1.65;
 }
 
-/* =========================
-   EPIC PARALLAX HERO
-========================= */
+/* ================= HERO ================= */
 .hero{
   position:relative;
   min-height:85vh;
@@ -41,15 +37,13 @@ body{
 .hero-bg{
   position:absolute;
   inset:-10%;
-  background:url('./assets/images/lachen-gurudongmar.jpg') center/cover no-repeat;
-  transform:translateZ(0);
+  background:url('./assets/images/lachen-gurudongmar-hero.jpg') center/cover no-repeat;
   will-change:transform;
 }
 .hero-overlay{
   position:absolute;
   inset:0;
-  background:
-    linear-gradient(180deg,rgba(0,0,0,.25),rgba(0,0,0,.7));
+  background:linear-gradient(180deg,rgba(0,0,0,.25),rgba(0,0,0,.75));
 }
 .hero-inner{
   position:relative;
@@ -57,264 +51,221 @@ body{
   max-width:var(--max-w);
   padding:48px 20px;
 }
-.hero-title{
-  font-size:clamp(30px,5vw,52px);
-  font-weight:800;
-  margin:0 0 14px;
-}
-.hero-sub{
-  color:#e5e7eb;
-  max-width:720px;
-}
 .kicker{
   font-size:12px;
   text-transform:uppercase;
   letter-spacing:.12em;
-  color:#d1d5db;
+  color:#e5e7eb;
   margin-bottom:10px;
 }
-
-/* Quick facts */
-.quickfacts{
-  display:flex;
-  gap:12px;
-  flex-wrap:wrap;
-  margin-top:22px;
+.hero-title{
+  font-size:clamp(32px,5vw,54px);
+  font-weight:800;
+  margin:0 0 14px;
 }
-.qf{
-  background:var(--glass);
-  backdrop-filter:blur(8px);
-  padding:12px 14px;
-  border-radius:12px;
-  font-size:14px;
-  font-weight:600;
-  color:#0b1220;
+.hero-sub{
+  max-width:720px;
+  color:#e5e7eb;
 }
 
-/* =========================
-   CONTENT
-========================= */
+/* ================= CONTENT ================= */
 .content{
   max-width:var(--max-w);
-  margin:42px auto;
+  margin:46px auto;
   padding:0 20px;
 }
 .lead{
   font-size:18px;
   color:var(--muted);
-  margin-bottom:22px;
+  margin-bottom:26px;
 }
 .rs-section{
   display:grid;
   grid-template-columns:63% 37%;
   gap:28px;
-  margin-bottom:40px;
+  margin-bottom:44px;
 }
 .rs-text{padding:8px}
-.rs-image{display:flex;align-items:flex-start}
-.single-img{
+.rs-image img{
   width:100%;
   aspect-ratio:16/9;
   object-fit:cover;
   border-radius:12px;
   box-shadow:0 16px 50px rgba(2,6,23,.08);
-  cursor:pointer;
-  transition:transform .35s ease;
 }
-.single-img:hover{transform:scale(1.02)}
-.caption{font-size:13px;color:var(--muted);margin-top:8px}
 
-h2{margin:0 0 10px;font-size:22px}
-p{margin:0 0 12px}
+h2{margin:0 0 12px;font-size:22px}
+p{margin:0 0 14px}
 
-/* =========================
-   GALLERY
-========================= */
-.gallery{
-  display:flex;
-  gap:10px;
-  flex-wrap:wrap;
+.insight{
+  font-style:italic;
+  border-left:3px solid var(--accent);
+  padding-left:14px;
+  color:#374151;
+  margin:18px 0;
 }
-.gallery img{
-  width:calc(33.333% - 6.6px);
+
+/* ================= VIDEO ================= */
+.video-frame{
   aspect-ratio:16/9;
-  object-fit:cover;
-  border-radius:10px;
-  cursor:pointer;
-}
-
-/* =========================
-   VIDEO PREVIEW
-========================= */
-.video-poster{
-  position:relative;
-  aspect-ratio:16/9;
+  width:100%;
   border-radius:12px;
   overflow:hidden;
-  cursor:pointer;
   background:#000;
 }
-.video-poster img{
+.video-frame iframe{
   width:100%;
   height:100%;
-  object-fit:cover;
-}
-.video-poster::after{
-  content:"▶";
-  position:absolute;
-  inset:0;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:72px;
-  color:#fff;
-  background:rgba(0,0,0,.25);
+  border:0;
 }
 
-/* =========================
-   LIGHTBOX (IMAGE + VIDEO)
-========================= */
-.lightbox{
-  position:fixed;
-  inset:0;
-  background:rgba(2,6,23,.85);
-  display:none;
-  align-items:center;
-  justify-content:center;
-  z-index:9999;
-  padding:20px;
-}
-.lightbox.show{display:flex}
-.lightbox-content{
-  max-width:90vw;
-  max-height:90vh;
-}
-.lightbox img,
-.lightbox iframe{
-  width:100%;
-  height:auto;
-  max-height:90vh;
-  border-radius:12px;
-}
-
-/* =========================
-   FOOTER
-========================= */
+/* ================= FOOTER ================= */
 .post-footer{
-  margin:40px 0 70px;
+  margin:48px 0 70px;
   color:var(--muted);
-}
-.btn{
-  display:inline-block;
-  padding:10px 16px;
-  background:var(--accent);
-  color:#fff;
-  border-radius:10px;
-  text-decoration:none;
-  font-weight:700;
 }
 
 /* Responsive */
 @media(max-width:900px){
   .rs-section{grid-template-columns:1fr}
-  .gallery img{width:calc(50% - 5px)}
-}
-@media(max-width:480px){
-  .gallery img{width:100%}
 }
 </style>
 </head>
 
 <body>
 
-<!-- HERO -->
 <header class="hero">
   <div class="hero-bg" id="heroBg"></div>
   <div class="hero-overlay"></div>
 
   <div class="hero-inner">
-    <div class="kicker">Long Ride — North Sikkim</div>
+    <div class="kicker">High Altitude Ride — North Sikkim</div>
     <h1 class="hero-title">Himalayan Dawn — Lachen to Gurudongmar</h1>
     <p class="hero-sub">
-      A sunrise climb above the treeline, frozen lakes, and a quiet that makes you breathe differently.
+      Thin air, silent roads, and a place that forces you to slow down — whether you want to or not.
     </p>
-
-    <div class="quickfacts">
-      <div class="qf">Distance: ~120 km</div>
-      <div class="qf">Altitude: 17,800+ ft</div>
-      <div class="qf">Time: Sunrise start</div>
-      <div class="qf">Difficulty: Moderate</div>
-    </div>
   </div>
 </header>
 
 <article class="content">
 
 <p class="lead">
-We left Lachen before dawn — not for speed, but for light. At altitude, light is safety.
+We left Lachen before sunrise, not chasing speed but light. At altitude, light means warmth, clarity, and time — and time matters when the road climbs beyond 17,000 feet.
 </p>
 
-<section style="margin-top:26px">
-<h2>Embedded ride video</h2>
+<section class="rs-section">
+  <div class="rs-text">
+    <h2>Leaving Lachen — cold, quiet, intentional</h2>
+    <p>
+      At 5:39 AM, the engine felt heavier than usual. Gloves stiff from cold, fingers numb, breath shallow.
+      The temperature hovered around 1–2°C, but it felt lower.
+    </p>
+    <p>
+      Luggage stayed untied. Today was about reaching Gurudongmar, not returning. Tire pressures were checked —
+      kept slightly lower for better grip on mountain surfaces.
+    </p>
+    <div class="insight">
+      In the mountains, too much tire pressure reduces contact — and contact is everything.
+    </div>
+  </div>
 
-<div class="video-poster" id="videoPoster">
-  <img src="./assets/images/video-poster.jpg" alt="Lachen to Gurudongmar ride video">
-</div>
+  <div class="rs-image">
+    <img src="./assets/images/lachen-dawn-road.jpg" alt="early morning road out of Lachen">
+  </div>
+</section>
+
+<section class="rs-section">
+  <div class="rs-text">
+    <h2>Climbing into cloud and light</h2>
+    <p>
+      As we climbed, clouds spilled across the valleys like slow-moving rivers. Pine forests faded,
+      replaced by open slopes and distant waterfalls barely visible through mist.
+    </p>
+    <p>
+      Then the sun arrived — not suddenly, but gently. Golden light cut across snow peaks,
+      revealing colors no camera can truly capture.
+    </p>
+  </div>
+
+  <div class="rs-image">
+    <img src="./assets/images/sunrise-snow-peaks.jpg" alt="sunrise over snow peaks">
+  </div>
+</section>
+
+<section class="rs-section">
+  <div class="rs-text">
+    <h2>Above the treeline — oxygen thins, silence grows</h2>
+    <p>
+      Past Thangu Valley, trees disappeared. The bike breathed harder. So did we.
+      Speaking took effort. Walking took intention.
+    </p>
+    <p>
+      Army checkpoints marked the seriousness of this terrain. This wasn’t tourism anymore —
+      it was exposure.
+    </p>
+    <div class="insight">
+      You don’t conquer altitude. You negotiate with it.
+    </div>
+  </div>
+
+  <div class="rs-image">
+    <img src="./assets/images/thangu-valley-road.jpg" alt="Thangu Valley road">
+  </div>
+</section>
+
+<section>
+  <h2>Final climb — vastness</h2>
+  <p>
+    The last stretch opens into a surreal plain. Mountains rise on both sides.
+    Glaciers hang in silence. The road feels insignificant — and so do you.
+  </p>
+  <p>
+    Oxygen drops further. Talking feels draining. We stop speaking, conserving energy,
+    letting the place speak instead.
+  </p>
+</section>
+
+<section style="margin-top:30px">
+  <h2>Ride footage</h2>
+  <div class="video-frame">
+    <iframe
+      src="https://www.youtube.com/embed/SdnARTlDYCU"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen>
+    </iframe>
+  </div>
+</section>
+
+<section style="margin-top:30px">
+  <h2>Gurudongmar — stillness and gratitude</h2>
+  <p>
+    At the lake, we lay down — not from tiredness, but awe. The water held impossible colors.
+    Mountains reflected back without distortion.
+  </p>
+  <p>
+    Time slowed. Thoughts quietened. Gratitude took over.
+    Staying long wasn’t safe — oxygen doesn’t allow indulgence here.
+  </p>
+  <p>
+    We left quietly, carrying something lighter than luggage — perspective.
+  </p>
 </section>
 
 <div class="post-footer">
-  <p><a class="btn" href="/products.html">See gear used on this ride</a></p>
+  <p>
+    This ride isn’t about destinations. It’s about learning how small you are —
+    and being okay with it.
+  </p>
 </div>
 
 </article>
 
-<!-- LIGHTBOX -->
-<div class="lightbox" id="lightbox">
-  <div class="lightbox-content" id="lightboxContent"></div>
-</div>
-
 <script>
-/* =========================
-   PARALLAX HERO
-========================= */
+/* Parallax */
 (function(){
-  const bg = document.getElementById('heroBg');
+  const bg=document.getElementById('heroBg');
   window.addEventListener('scroll',()=>{
-    const y = window.scrollY * 0.25;
-    bg.style.transform = `translateY(${y}px)`;
-  });
-})();
-
-/* =========================
-   LIGHTBOX HANDLER
-========================= */
-(function(){
-  const lb = document.getElementById('lightbox');
-  const content = document.getElementById('lightboxContent');
-
-  function open(html){
-    content.innerHTML = html;
-    lb.classList.add('show');
-  }
-  function close(){
-    lb.classList.remove('show');
-    content.innerHTML='';
-  }
-
-  document.getElementById('videoPoster').onclick=()=>{
-    open(`
-      <iframe
-        src="https://www.youtube.com/embed/SdnARTlDYCU?autoplay=1"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen
-        style="aspect-ratio:16/9;width:100%;border:0;">
-      </iframe>
-    `);
-  };
-
-  lb.onclick=close;
-  document.addEventListener('keydown',e=>{
-    if(e.key==='Escape') close();
+    bg.style.transform=`translateY(${window.scrollY*0.25}px)`;
   });
 })();
 </script>
